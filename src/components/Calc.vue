@@ -1,12 +1,12 @@
 <template lang="pug">
   v-container
     v-row(justify="center")
-      v-col.offset-0(cols="12" md="4")
+      v-col.offset-0(cols="12" md="4").calc
         v-row
           v-col(cols = "12")
             div.input-display.text-right {{valueDisplayed}}
           v-col(cols = "12")
-            v-btn.error(block @click='reset()') С
+            v-btn.error(block @click='reset()') C
           v-col(cols = '3' v-for='operation in operations')
             v-btn.primary(@click='handleDigit(operation.text)' block
               v-if="operation.type === 'number'" )
@@ -88,9 +88,14 @@ export default {
 </script>
 
 <style lang="sass">
+@import url('https://fonts.googleapis.com/css2?family=Oxanium:wght@500&display=swap')
+.calc
+  font-family: 'Oxanium', monospace
 .input-display
   font-size: xx-large
   background: mediumseagreen
   color: black
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.9)
   padding: 12px
+  user-select: none
 </style>
