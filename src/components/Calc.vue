@@ -64,16 +64,22 @@ export default {
     },
     process() {
       const currentValueNumber = parseFloat(this.currentValue);
-      if (this.currentOp === 'sum') {
-        this.savedValue += currentValueNumber;
-      } else if (this.currentOp === 'difference') {
-        this.savedValue -= currentValueNumber;
-      } else if (this.currentOp === 'multiply') {
-        this.savedValue *= currentValueNumber;
-      } else if (this.currentOp === 'division') {
-        this.savedValue /= currentValueNumber;
-      } else if (this.currentOp === 'equal' && currentValueNumber) {
-        this.savedValue = currentValueNumber;
+      switch (this.currentOp) {
+        case 'sum':
+          this.savedValue += currentValueNumber;
+          break;
+        case 'difference':
+          this.savedValue -= currentValueNumber;
+          break;
+        case 'multiply':
+          this.savedValue *= currentValueNumber;
+          break;
+        case 'division':
+          this.savedValue /= currentValueNumber;
+          break;
+        default:
+          this.savedValue = currentValueNumber;
+          break;
       }
       this.currentValue = 0;
       this.currentOp = false;
